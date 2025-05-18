@@ -54,6 +54,6 @@ python main.py \
 - `generations`：迭代次数，默认为 `1000`
 - `mutation_rate`：变异概率，默认为 `0.2`
 - `crossover_rate`：交叉概率，默认为 `0.9`
-- `disable_list`：禁用某些操作，默认为 `""`，可选 `["mutation", "crossover"]`，分别表示禁用变异和交叉
-- `use_data`：使用的数据集编号，默认为 `10`，可选 `1-10`
+- `disable_list`：禁用某些限制（默认所有限制都考虑）。禁用的限制用英文逗号隔开，可选的包括demand(载重约束)、time(时间窗口约束)
+- `use_data`：使用多少个数据，默认为 `10`
 
