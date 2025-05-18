@@ -44,14 +44,15 @@ def set_seed(seed: int):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--problem", type=str, default="cvrptw", choices=['cvrptw'])
-    parser.add_argument("--solver", type=str, default="ga", choices=['ga', 'dp_ga'])
+    parser.add_argument("--solver", type=str, default="dp_ga", choices=['ga', 'dp_ga'])
     parser.add_argument("--data_folder", type=str, default="./In")
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--population_size", type=int, default=100)
-    parser.add_argument("--generations", type=int, default=1000)
+    parser.add_argument("--population_size", type=int, default=200)
+    parser.add_argument("--generations", type=int, default=5000)
     parser.add_argument("--mutation_rate", type=float, default=0.2)
     parser.add_argument("--crossover_rate", type=float, default=0.9)
     parser.add_argument("--disable_list", type=str, default="")
+    parser.add_argument("--use_data", type=int, default=10)
     args = parser.parse_args()
     
     set_seed(args.seed)
@@ -82,7 +83,7 @@ def main():
     file_list = [os.path.join(args.data_folder, f) for f in os.listdir(args.data_folder) if f.endswith(".txt")]
     file_list = sorted(file_list)
     random.shuffle(file_list)
-    file_list = file_list[:10]
+    file_list = file_list[:args.use_data]
     tot_cnt = 0
     all_len = []
     all_time = []
